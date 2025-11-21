@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flip Book</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./bookstyle.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Script -->
+    <script src="./book.js" defer></script>
+     <style>
+  
+    body {
+    margin: 0;
+    display: flex;
+    overflow-x: scroll; 
+    scroll-behavior: smooth;
+  }
+
+
+  body::-webkit-scrollbar {
+    display: none; 
+  }
+  body {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;     
+  }
+
+  /* Shared arrow base */
+  .arrow {
+    cursor: pointer;
+    height: 60px;
+    position: fixed;
+    top: 50%;
+    width: 50px;
+    transform: translateY(-50%);
+    
+    z-index: 10;
+  }
+
+  /* Left arrow  */
+  .arrow-left {
+    left: 10%;
+    transform: translateY(-50%) scaleX(-1);
+  }
+
+  /* Right arrow  */
+  .arrow-right {
+    left: 75%;
+    transform: translateY(-50%);
+  }
+
+  .arrow:active {
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  .arrow-left:active {
+    transform: translateY(-50%) scale(0.9) scaleX(-1);
+  }
+
+  .arrow-top, .arrow-bottom {
+    background-color: #666;
+    height: 4px;
+    left: -5px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+
+  .arrow-top::after, .arrow-bottom::after {
+    background-color: #fff;
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: all 0.15s;
+  }
+
+  .arrow-top {
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+  }
+
+  .arrow-top::after {
+    left: 100%;
+    right: 0;
+  }
+
+  .arrow-bottom {
+    transform: rotate(-45deg);
+    transform-origin: top right;
+  }
+
+  .arrow-bottom::after {
+    left: 0;
+    right: 100%;
+    transition-delay: 0.15s;
+  }
+
+  .arrow:hover .arrow-top::after {
+    left: 0;
+    transition-delay: 0.15s;
+  }
+
+  .arrow:hover .arrow-bottom::after {
+    right: 0;
+    transition-delay: 0s;
+  }
+</style>
+
+<!-- Arrows -->
+<div class="arrow arrow-left"id="arrowLeft">
+  <div class="arrow-top"></div>
+  <div class="arrow-bottom"></div>
+</div>
+
+<div class="arrow arrow-right"id="arrowRight" >
+  <div class="arrow-top"></div>
+  <div class="arrow-bottom"></div>
+</div>
+
+<script>
+  // Left arrow: browser back
+  document.getElementById("arrowLeft").addEventListener("click", () => {
+  window.location.href = 'index.html';
+  });
+
+
+ const rightBtn = document.getElementById("arrowRight");
+rightBtn.addEventListener("click", () => {
+  // List of pages in order
+  const pages = [
+    './about-me.html',
+    './games-creation.html',
+    './digital-art.html',
+    './3d-modelling.html',
+    './traditional-art.html',
+    './graphic-design.html'
+  ];
+
+  const currentURL = window.location.href;
+  let currentIndex = pages.findIndex(p => currentURL.includes(p.replace('./', '')));
+  if (currentIndex === -1) currentIndex = 0;
+
+  const nextIndex = currentIndex + 1;
+  if (nextIndex < pages.length) {
+    window.location.href = pages[nextIndex];
+  } else {
+    // Loop back to first page if at end
+    window.location.href = pages[0];
+  }
+});
+</script>
+</head>
+
+<body>
+    <div class="background"></div> 
+    <main>
+         <body class="book-4">
+        <input type="checkbox" id="cover_checkbox">
+        <input type="checkbox" id="page1_checkbox">
+        <input type="checkbox" id="page2_checkbox">
+        <input type="checkbox" id="page3_checkbox">
+        <input type="checkbox" id="page4_checkbox">
+        <input type="checkbox" id="page5_checkbox">
+
+        <!-- Flip Book -->
+        <div id="flip_book">
+            <div class="front_cover">
+                <label for="cover_checkbox" id="cover"></label>
+                <section><span>  3d Modelling
+                </span></section> 
+            </div>
+
+            <div class="page" id="page1">
+                <div class="front_page">
+                    <label for="page1_checkbox"></label>
+                     <section><span>  
+
+                    Coming soon..
+                </div>
+
+                <div class="back_page">
+                    <label for="page1_checkbox"></label>
+                    <!-- <img class="back_content" src="./WebDev/images/pages/page2.webp" alt="Back content"> -->
+                </div>
+            </div>
+
+            <div class="page" id="page2">
+                <div class="front_page">
+                    <label for="page2_checkbox"></label>
+                    <!-- <img class="front_content" src="./WebDev/images/pages/page3.webp" alt="Front content"> -->
+                </div>
+
+                <div class="back_page">
+                    <label for="page2_checkbox"></label>
+                    <!-- <img class="back_content" src="./WebDev/images/pages/page4.webp" alt="Back content"> -->
+                </div>
+            </div>
+
+            <div class="page" id="page3">
+                <div class="front_page">
+                    <label for="page3_checkbox"></label>
+                    <!-- <img class="front_content" src="./WebDev/images/pages/page5.webp" alt="Front content"> -->
+                </div>
+
+                <div class="back_page">
+                    <label for="page3_checkbox"></label>
+                    <!-- <img class="back_content" src="./WebDev/images/pages/page6.webp" alt="Back content"> -->
+                </div>
+            </div>
+
+            <div class="page" id="page4">
+                <div class="front_page">
+                    <label for="page4_checkbox"></label>
+                </div>
+
+                <div class="back_page">
+                    <label for="page4_checkbox"></label>
+                    <!-- <img class="back_content" src="./WebDev/images/pages/page8.webp" alt="Back content"> -->
+                </div>
+            </div>
+
+            <div class="page" id="page5">
+                <div class="front_page">
+                    <label for="page5_checkbox"></label>
+                    <!-- <img class="front_content" src="./WebDev/images/pages/page9.webp" alt="Front content"> -->
+                </div>
+
+                <div class="back_page">
+                    <label for="page5_checkbox"></label>
+                    
+                    <!-- <img class="back_content" src="./WebDev/images/pages/page10.webp" alt="Back content"> -->
+                </div>
+            </div>
+
+            <div class="back_cover"></div>
+        </div>
+
+
+    
+
+
+        <!-- Responsive Warning -->
+        <div id="responsive-warning">
+            <i class="ri-error-warning-line warning-icons"></i>
+            <p>This web application is not optimized for mobile.</p>
+            <p>Please visit it on a desktop computer for the best experience.</p>
+        </div>
+    </main>
+</body>
+
+</html>

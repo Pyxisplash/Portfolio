@@ -1,0 +1,519 @@
+/* RESET CSS */
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('font/Myfont-Regular.ttf') format('truetype');
+}
+
+section {
+  font-family: 'MyFont', sans-serif;
+   font-size: 65px;
+      border-radius: 2.5px 5px 5px 2.5px;
+}
+/* GENERAL */
+body {
+    /* === FRONT COVERS === */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./images/web back 3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    
+}
+
+.book-1 .front_cover {
+    background-image: url('./images/patterns\ book\ cover\ 1.png');
+    background-color: white;
+    max: width 574px; ;
+    max-height: 710px;
+
+}
+
+
+
+.book-2 .front_cover {
+    background-image: url('./images/patterns book cover 2.png');
+    background-color: transparent;
+}
+
+.book-3 .front_cover {
+    background-image: url('./images/patterns book cover 3.png');
+    background-color: transparent;
+}
+
+.book-4 .front_cover {
+    background-image: url('./images/patterns book cover 4.png');
+    background-color: transparent;
+}
+
+.book-5 .front_cover {
+    background-image: url('./images/patterns book cover 5.png');
+    background-color: transparent;
+}
+.book-6 .front_cover {
+    background-image: url('./images/pattern\ 6\ book.png');
+    background-color: transparent;
+}
+
+/* === BACK COVERS === */
+.book-1 .back_cover {
+    background-image: url('./images/pattern 1.png');
+    background-color: transparent;
+}
+
+.book-2 .back_cover {
+    background-image: url('./images/pattern 2.png');
+    background-color: transparent;
+}
+
+.book-3 .back_cover {
+    background-image: url('./images/pattern 3.png');
+    background-color: transparent;
+}
+
+.book-4 .back_cover {
+    background-image: url('./images/pattern 4.png');
+    background-color: transparent;
+}
+
+.book-5 .back_cover {
+    background-image: url('./images/pattern 5.png');
+    background-color: transparent;
+}
+.book-6 .back_cover {
+    background-image: url('./images/pattern6.png');
+    background-color: transparent;
+}
+            
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace, sans-serif;
+    font-size: 0.5rem;
+    transition: background-color 0.3s;
+	
+
+    /* #button {
+		
+		position: absolute;
+		font-size: 1.5em;
+		text-transform: uppercase;
+		padding: 7px 20px;
+		left: 25%;
+		width: 200px;
+		margin-left: -100px;
+		top: 50%;
+		border-radius: 10px;
+		color: white;
+		text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+		border: 5px solid transparent;
+		border-bottom-color: rgba(0,0,0,0.35);
+		background: hsla(260, 100%, 50%, 1);
+		cursor: pointer;
+    outline: 0 !important;
+
+		animation: pulse 1s infinite alternate;
+		transition: 0.4s, border 0.2s, margin 0.2s;
+	}
+	#button:hover {
+		background: hsla(220, 100%, 60%, 1);
+		margin-top: -1px;
+
+		animation: none;
+	}
+	#button:active {
+		border-bottom-width: 0;
+		margin-top: 5px;
+	}
+	@keyframes pulse {
+		0% {
+			margin-top: 0px;
+		}
+		100% {
+			margin-top: 6px; 
+		} 
+	}
+}
+*/
+
+input {
+    display: none;
+} 
+
+/* RESPONSIVE WARNING */
+}
+#responsive-warning {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1rem;
+    text-align: center;
+    z-index: 9999;
+}
+
+
+@media (max-width: 768px) {
+    #responsive-warning.show {
+        display: flex;
+    }
+}
+
+/* FLIP BOOK */
+#flip_book {
+    width: 550px;
+    height: 550px;
+    aspect-ratio: 3/ 4;
+    position: relative;
+    transition-duration: 1s;
+    perspective: 2000px;
+}
+#flip_book1 {
+    width: 550px;
+    height: 550px;
+    aspect-ratio: 3/ 4;
+    position: relative;
+    transition-duration: 1s;
+    perspective: 2000px;
+}
+.front_cover,
+.back_cover {
+       background-color: white;
+    color: black;
+    min-width: 650;
+    min-height: 550px;
+    padding: 5rem;
+    top: 1000;
+   left: 50;
+    aspect-ratio: 3/ 4;
+    flex-shrink: 0;
+    border-radius: 2.5px 5px 5px 2.5px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* needs too be ajustable images depen which book -- classes */
+    box-shadow: 0 0 5px 0 rgb(25, 25, 25, 0.25);
+}
+/* === FRONT COVER IMAGES === */
+.book-1 .front_cover {
+    background-image: url('./images/patterns book cover 1.png');
+
+}
+.book-2 .front_cover {
+    background-image: url('./images/patterns book cover 2.png');
+}
+
+.book-3 .front_cover {
+    background-image: url('./images/patterns book cover 3.png');
+}
+
+.book-4 .front_cover {
+    background-image: url('./images/patterns book cover 4.png');
+}
+
+.book-5 .front_cover {
+    background-image: url('./images/patterns book cover 5.png');
+}
+.book-6 .front_cover {
+    background-image: url('./images/pattern\ 6\ book.png');
+}
+
+/* === BACK COVER PATTERNS === */
+.book-1 .back_cover {
+    background-image: url('./images/pattern 1.png');
+}
+
+.book-2 .back_cover {
+    background-image: url('./images/pattern 2.png');
+}
+
+.book-3 .back_cover {
+    background-image: url('./images/pattern 3.png');
+}
+
+.book-4 .back_cover {
+    background-image: url('./images/pattern 4.png');
+}
+
+.book-5 .back_cover {
+    background-image: url('./images/pattern 5.png');
+}
+.book-6 .back_cover {
+    background-image: url('./images/pattern 5.png');
+}
+.front_cover {
+    position: absolute;
+    cursor: pointer;
+    transform-origin: center left;
+    transition: transform 0.5s;
+    z-index: 99;
+}
+
+.front_cover label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.page {
+    width: 550px;
+    height: 690px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 0 5px 5px 0;
+    background-color: rgb(240, 234, 234); 
+    /* change depending on which book (html) */
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition-duration: 0.5s;
+}
+
+.front_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.back_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    z-index: 100;
+}
+
+.back_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.edge_shading {
+    width: 288px;
+    height: 400px;
+    position: absolute;
+    z-index: 98;
+}
+
+.front_content {
+    width: 550px;
+    height: 700px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 5px 0 0 5px;
+    z-index: 97;
+}
+
+.back_content {
+    width: 550px;
+    height: 700px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 5px 0 0 5px;
+    z-index: 97;
+}
+
+.back_cover {
+    position: relative;
+    z-index: -1;
+}
+
+#page1 {
+    z-index: 8;
+}
+
+#page2 {
+    z-index: 6;
+}
+
+#page3 {
+    z-index: 5;
+}
+
+#page4 {
+    z-index: 4;
+}
+
+#page5 {
+    z-index: 3;
+}
+#page6 {
+  z-index: 2;
+}
+#page7 {
+  z-index: 1;/* mess with this number for clippin issues*/
+}
+#page8 {
+  z-index: 0;/* mess with this number for clippin issues*/
+}
+/* add new here for more pages*/
+#cover_checkbox:checked~#flip_book {
+    transform: translateX(144px)
+}
+
+#cover_checkbox:checked~#flip_book .front_cover {
+    transform: rotateY(-180deg);
+    transition: transform 1.5s, z-index 0.5s 0.5s;
+    z-index: 1;
+}
+
+#cover_checkbox:checked~#flip_book #cover {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+}
+
+#page1_checkbox:checked~#flip_book #page1 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+#page2_checkbox:checked~#flip_book #page2 {
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+
+#page3_checkbox:checked~#flip_book #page3 {
+    transform: rotateY(-180deg);
+    z-index: 5;
+}
+
+#page4_checkbox:checked~#flip_book #page4 {
+    transform: rotateY(-180deg);
+    z-index: 6;
+}
+
+#page5_checkbox:checked~#flip_book #page5 {
+    transform: rotateY(-180deg);
+    z-index: 7;
+}
+#page6_checkbox:checked ~ #flip_book #page6 {
+  transform: rotateY(-180deg);
+  z-index: 10;
+}
+
+#page7_checkbox:checked ~ #flip_book #page7 {
+  transform: rotateY(-180deg);
+   z-index: 15;/* mess with this number for clippin issues*/
+}
+
+
+#page8_checkbox:checked ~ #flip_book #page8 {
+  transform: rotateY(-180deg);
+   z-index: 19 ;/* mess with this number for clippin issues*/
+}
+/* add new here for more pages*/
+
+#cover_checkbox:checked~#flip_book1 {
+    transform: translateX(144px)
+}
+
+#cover_checkbox:checked~#flip_book1 .front_cover {
+    transform: rotateY(-180deg);
+    transition: transform 1.5s, z-index 0.5s 0.5s;
+    z-index: 1;
+}
+
+#cover_checkbox:checked~#flip_book1 #cover {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+}
+
+#page1_checkbox:checked~#flip_book1 #page1 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+#page2_checkbox:checked~#flip_book1 #page2 {
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+.book-1 .front_page {
+ .container {
+     max-width: 90;
+     min-width: 99;
+     margin: 0 auto;
+     padding: 0 1px;
+     margin-bottom: 30;
+     flex-direction: column;
+}
+
+/* Main Section */
+
+.wrapper { 
+    padding: 2.5rem;
+  
+    
+}
+
+.main {
+    flex: 4;
+}
+
+.main h2 {
+    font-size: 32px;
+    margin: 1rem 0;
+    color: #764ABC;
+}
+
+.main p {
+    font-size: 1.5rem;
+    margin-bottom: .75rem;
+}
+
+
+.intro-img {
+  width: 250px;
+  height: 250px;
+  float: left;
+  shape-outside: circle() margin-box;
+  shape-margin: 10px;
+}  
+
+
+
+@media (max-width: 600px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .main {
+        margin-right: 0;
+        margin-bottom: 60px;
+    }
+}}
+

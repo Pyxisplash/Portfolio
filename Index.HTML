@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arrow Scroll Right</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      overflow-x: auto;    
+      scroll-behavior: smooth; 
+    }
+
+    
+    .arrow {
+      cursor: pointer;
+      height: 60px;
+      left: 50%;
+      position: fixed;
+      right: 20px;
+      top: 90%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: transform 0.3s ease; 
+      width: 50px;
+      z-index: 10;
+    }
+
+    .arrow-top, .arrow-bottom {
+      background-color: #666;
+      height: 4px;
+      left: -5px;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+    }
+
+    .arrow-top:after, .arrow-bottom:after {
+      background-color: #fff;
+      content: "";
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transition: all 0.15s;
+    }
+
+    .arrow-top {
+      transform: rotate(45deg);
+      transform-origin: bottom right;
+    }
+
+    .arrow-top:after {
+      left: 100%;
+      right: 0;
+      transition-delay: 0s;
+    }
+
+    .arrow-bottom {
+      transform: rotate(-45deg);
+      transform-origin: top right;
+    }
+
+    .arrow-bottom:after {
+      left: 0;
+      right: 100%;
+      transition-delay: 0.05s;
+    }
+
+    .arrow:hover .arrow-top:after {
+      left: 0;
+      transition-delay: 0.05s;
+    }
+
+    .arrow:hover .arrow-bottom:after {
+      right: 0;
+      transition-delay: 0s;
+    }
+
+    .arrow:active {
+      transform: translateX(-50%) translateY(-50%) scale(0.9);
+    }
+
+    
+    .flipped {
+      transform: translateX(-50%) translateY(-50%) scaleX(-1);
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <div class="arrow" id="scrollRight">
+    <div class="arrow-top"></div>
+    <div class="arrow-bottom"></div>
+  </div>
+
+  <div class="background"></div> 
+
+  <main>
+    <div class="items">
+      <a href="about-me.html" class="book-link">
+        <section class="rotate-5 pattern-1 item">
+          <span>About me</span>
+        </section>
+      </a>
+      <a href="games-creation.html" class="book-link">
+        <section class="rotate-3 pattern-2 item">
+          <span>Games Creation</span>
+        </section>
+      </a>
+      <a href="digital-art.html" class="book-link">
+        <section class="rotate-5 pattern-3 item">
+          <span>Digital Art</span>
+        </section>
+      </a>
+      <a href="3d-modelling.html" class="book-link">
+        <section class="rotate--3 pattern-4 item">
+          <span>3D Modelling</span>
+        </section>
+      </a>
+      <a href="traditional-art.html" class="book-link">
+        <section class="rotate--5 pattern-5 item">
+          <span>Traditional Art</span>
+        </section>
+      </a>
+      <a href="graphic-design.HTML" class="book-link">
+        <section class="rotate-3 pattern-6 item">
+          <span>Graphic Design</span>
+        </section>
+    </div>
+  </main>
+
+  
+  <script>
+    const arrow = document.getElementById("scrollRight");
+    let goingRight = true;
+
+    arrow.addEventListener("click", function() {
+    
+      const container = document.scrollingElement; 
+      const scrollAmount = window.innerWidth;
+
+      if (goingRight) {
+        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        arrow.classList.add("flipped"); // flip left
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        arrow.classList.remove("flipped"); // flip to right
+      }
+
+      goingRight = !goingRight; // toggle direction
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="../drag.js"></script>
+
+ 
+</body>
+</html>

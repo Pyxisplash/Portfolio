@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">    
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Scrolling Book Sections</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="background"></div> <!-- Fixed background image -->
+
+<main>
+    <section class="rotate-3 pattern-1">Section with pattern 1</section>
+    <section class="rotate--3 pattern-2">Section with pattern 2</section>
+    <section class="rotate-5 pattern-3">Section with pattern 3</section>
+    <section class="rotate--3 pattern-4">Section with pattern 4</section>
+    <section class="rotate--5 pattern-5">Section with pattern 5</section>
+</main>
+<script>
+  const main = document.querySelector('main');
+  let isDown = false, startX, scrollLeft;
+
+  main.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX;
+    scrollLeft = main.scrollLeft;
+  });
+       
+  main.addEventListener('mouseup', () => isDown = false);
+  main.addEventListener('mouseleave', () => isDown = false);
+
+  main.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    main.scrollLeft += startX - e.pageX;
+    startX = e.pageX;
+  });
+</script>
+</body>
+</html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Font Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>This uses MyFont</h1>
+  <p>The custom font should apply here too.</p>
+</body>
+</html>
