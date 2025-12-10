@@ -118,6 +118,19 @@
     right: 0;
     transition-delay: 0s;
   }
+
+  /* Title fade animation */
+  #bookTitle {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  #bookTitle.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+  }
 </style>
 
 <!-- Arrows -->
@@ -190,8 +203,7 @@ rightBtn.addEventListener("click", () => {
         <div id="flip_book1">
             <div class="front_cover">
                 <label for="cover_checkbox" id="cover"></label>
-                <section><span>  About me
-                </span></section>
+                <section id="bookTitle"><span>About Me</span></section>
             </div>
 
 
@@ -237,19 +249,45 @@ rightBtn.addEventListener("click", () => {
                 </div>
             </div>
 
-
             <div class="back_cover"></div>
         </div>
 
+        <script>
+        // Hide/show title when pages are turned
+        (function() {
+          const title = document.getElementById('bookTitle');
+          if (!title) return;
+          
+          const checkboxes = ['cover_checkbox', 'page1_checkbox', 'page2_checkbox', 'page3_checkbox', 'page4_checkbox', 'page5_checkbox'];
+          
+          function updateTitle() {
+            // Check if ANY page is open (including cover)
+            const anyPageOpen = checkboxes.some(id => {
+              const el = document.getElementById(id);
+              return el && el.checked;
+            });
+            
+            if (anyPageOpen) {
+              title.classList.add('hidden');
+            } else {
+              title.classList.remove('hidden');
+            }
+          }
+          
+          // Listen to all checkbox changes
+          checkboxes.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.addEventListener('change', updateTitle);
+            }
+          });
+          
+          // Initial state
+          updateTitle();
+        })();
+        </script>
 
-
-
-   
-
-
-
-
-     
+        <!-- Responsive Warning -->
         <div id="responsive-warning">
             <i class="ri-error-warning-line warning-icons"></i>
             <p>This web application is not optimized for mobile.</p>
