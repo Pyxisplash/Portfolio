@@ -2,7 +2,72 @@
 const responsiveWarning = document.getElementById("responsive-warning");
 // "true" if the site is optimized for responsive design, "false" if not.
 const responsiveDesign = false;
+const introOverlayKey = "webstoof-book-intro-seen";
 
+function showBookIntro() {
+	if (localStorage.getItem(introOverlayKey) === "true") {
+		return;
+	}
+
+	const overlay = document.createElement("div");
+	overlay.className = "book-intro-overlay";
+	overlay.setAttribute("role", "dialog");
+	overlay.setAttribute("aria-modal", "true");
+	overlay.setAttribute("aria-labelledby", "book-intro-title");
+	overlay.innerHTML = `
+		<div class="book-intro-panel">
+			<button class="book-intro-close" type="button" aria-label="Close">&times;</button>
+			<p class="book-intro-kicker">A quick guide</p>
+			<h2 id="book-intro-title">Explore the book</h2>
+			<div class="book-intro-boxes">
+				<div class="book-intro-box">
+					<strong>Open a page</strong>
+					<span>Click the cover or a page edge to turn the page.</span>
+				</div>
+				<div class="book-intro-box">
+					<strong>Move between books</strong>
+					<span>Use the arrows to go back home or visit the next book.</span>
+				</div>
+				<div class="book-intro-box">
+					<strong>Take your time</strong>
+					<span>Each book is interactive, so click through to discover more!</span>
+				</div>
+			</div>
+			<button class="book-intro-start" type="button">Start exploring</button>
+		</div>
+	`;
+
+	document.body.appendChild(overlay);
+	document.body.classList.add("book-intro-open");
+
+	const closeOverlay = () => {
+		localStorage.setItem(introOverlayKey, "true");
+		document.body.classList.remove("book-intro-open");
+		overlay.remove();
+		document.removeEventListener("keydown", handleKeydown);
+	};
+	const handleKeydown = (event) => {
+		if (event.key === "Escape") {
+			closeOverlay();
+		}
+	};
+
+	overlay.querySelector(".book-intro-close").addEventListener("click", closeOverlay);
+	overlay.querySelector(".book-intro-start").addEventListener("click", closeOverlay);
+	overlay.addEventListener("click", (event) => {
+		if (event.target === overlay) {
+			closeOverlay();
+		}
+	});
+	document.addEventListener("keydown", handleKeydown);
+	overlay.querySelector(".book-intro-start").focus();
+}
+
+try {
+	showBookIntro();
+} catch (error) {
+	// Ignore storage restrictions so the flip book still works normally.
+}
 // Show mobile warning if the user is on mobile and responsive-design is false.
 // if (!responsiveDesign && window.innerWidth <= 768) {
 // 	responsiveWarning.classList.add("show");

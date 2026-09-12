@@ -30,7 +30,7 @@ body {
 .book-1 .front_cover {
     background-image: url('./images/patterns\ book\ cover\ 1.png');
     background-color: white;
-    max: width 574px; ;
+    max-width: 574px;
     max-height: 710px;
 
 }
@@ -516,4 +516,114 @@ input {
         margin-bottom: 60px;
     }
 }}
+
+/* FIRST-VISIT INTRODUCTION */
+body.book-intro-open {
+    overflow: hidden;
+}
+
+.book-intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    background: rgba(28, 23, 35, 0.62);
+    backdrop-filter: blur(5px);
+    font-family: "MyFont", sans-serif;
+}
+
+.book-intro-panel {
+    position: relative;
+    width: min(680px, 100%);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    color: #271c2b;
+    background: #fff8f0;
+    border: 5px solid #dca8bf;
+    border-radius: 8px;
+    box-shadow: 12px 14px 0 #76536f;
+    text-align: center;
+}
+
+.book-intro-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 0;
+    border-radius: 50%;
+    color: #271c2b;
+    background: #f2d4df;
+    font: 1.75rem/1 sans-serif;
+    cursor: pointer;
+}
+
+.book-intro-kicker {
+    margin: 0 0 0.35rem;
+    color: #a45670;
+    font: 0.9rem/1.2 monospace, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.book-intro-panel h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: normal;
+}
+
+.book-intro-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    text-align: left;
+}
+
+.book-intro-box {
+    display: flex;
+    min-height: 130px;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1rem;
+    background: #f7e2d7;
+    border-left: 4px solid #c1758f;
+}
+
+.book-intro-box strong {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.book-intro-box span {
+    font: 0.95rem/1.35 monospace, sans-serif;
+}
+
+.book-intro-start {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.4rem;
+    border: 0;
+    border-radius: 3px;
+    color: #fff8f0;
+    background: #76536f;
+    font: 1.1rem "MyFont", sans-serif;
+    cursor: pointer;
+}
+
+.book-intro-close:focus-visible,
+.book-intro-start:focus-visible {
+    outline: 3px solid #4e9a9a;
+    outline-offset: 3px;
+}
+
+@media (max-width: 620px) {
+    .book-intro-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .book-intro-box {
+        min-height: auto;
+    }
+}
 
