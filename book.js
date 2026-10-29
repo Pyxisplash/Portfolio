@@ -68,6 +68,144 @@ try {
 } catch (error) {
 	// Ignore storage restrictions so the flip book still works normally.
 }
+
+const mobileHomeButton = document.createElement('a');
+mobileHomeButton.href = './index.html';
+mobileHomeButton.className = 'mobile-home-button';
+mobileHomeButton.setAttribute('aria-label', 'Back to home');
+mobileHomeButton.title = 'Home';
+mobileHomeButton.innerHTML = '<img src="./icons/43cf9355-8cf6-4df6-84a2-235e9ccec9c6.png" alt="Home" />';
+
+const enableMobilePortraitMode = () => {
+	if (window.matchMedia('(max-width: 768px) and (orientation: portrait)').matches) {
+		if (!document.body.contains(mobileHomeButton)) {
+			document.body.appendChild(mobileHomeButton);
+		}
+		return true;
+	}
+
+	if (document.body.contains(mobileHomeButton)) {
+		mobileHomeButton.remove();
+	}
+	return false;
+};
+
+const mobilePageReader = () => {
+	if (!enableMobilePortraitMode()) {
+		return;
+	}
+
+	const nextBookMap = [
+		'./about-me.html',
+		'./games-creation.html',
+		'./digital-art.html',
+		'./3d-modelling.html',
+		'./traditional-art.html',
+		'./graphic-design.html'
+	];
+
+	const getNextBookPath = () => {
+		const currentPageName = window.location.pathname.split('/').pop() || '';
+		const currentIndex = nextBookMap.findIndex((bookPath) => bookPath.endsWith(currentPageName));
+		const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % nextBookMap.length : 0;
+		return nextBookMap[nextIndex];
+	};
+
+	const books = [document.getElementById('flip_book'), document.getElementById('flip_book1')].filter(Boolean);
+	books.forEach((book) => {
+		const pages = [...book.querySelectorAll('.page')];
+		if (!pages.length) return;
+
+		book.classList.add('mobile-reader');
+		let currentPage = 0;
+		let showBack = false;
+		let isAnimating = false;
+
+		const render = () => {
+			pages.forEach((page, index) => {
+				const active = index === currentPage;
+				page.classList.toggle('active', active);
+				page.style.display = active ? 'block' : 'none';
+				page.style.visibility = active ? 'visible' : 'hidden';
+				page.style.transform = active ? 'translateX(0) scale(1)' : 'translateX(18px) scale(0.98)';
+				page.style.pointerEvents = active ? 'auto' : 'none';
+
+				const front = page.querySelector('.front_content');
+				const back = page.querySelector('.back_content');
+				if (front) front.style.display = active && !showBack ? 'block' : 'none';
+				if (back) back.style.display = active && showBack ? 'block' : 'none';
+			});
+		};
+
+		book.querySelectorAll('.front_cover').forEach((cover) => {
+			cover.style.display = 'none';
+		});
+		document.querySelectorAll('.arrow').forEach((arrow) => {
+			arrow.style.display = 'none';
+		});
+
+		book.addEventListener('click', (event) => {
+			if (isAnimating) return;
+			const rect = book.getBoundingClientRect();
+			const clickX = event.clientX - rect.left;
+			const isLeftSide = clickX < rect.width / 2;
+			isAnimating = true;
+
+			if (isLeftSide) {
+				if (showBack) {
+					showBack = false;
+				} else if (currentPage > 0) {
+					currentPage -= 1;
+					showBack = true;
+				}
+				render();
+				window.setTimeout(() => {
+					isAnimating = false;
+				}, 420);
+				return;
+			}
+
+			if (showBack) {
+				if (currentPage < pages.length - 1) {
+					currentPage += 1;
+					showBack = false;
+				} else {
+					book.style.transform = 'translateX(-10px)';
+					window.setTimeout(() => {
+						window.location.href = getNextBookPath();
+					}, 220);
+					return;
+				}
+			} else if (pages[currentPage].querySelector('.back_content')) {
+				showBack = true;
+			} else if (currentPage < pages.length - 1) {
+				currentPage += 1;
+				showBack = false;
+			} else {
+				book.style.transform = 'translateX(-10px)';
+				window.setTimeout(() => {
+					window.location.href = getNextBookPath();
+				}, 220);
+				return;
+			}
+
+			render();
+			window.setTimeout(() => {
+				isAnimating = false;
+			}, 420);
+		});
+
+		render();
+	});
+};
+
+mobilePageReader();
+window.addEventListener('resize', () => {
+	mobilePageReader();
+});
+window.addEventListener('orientationchange', () => {
+	mobilePageReader();
+});
 // Show mobile warning if the user is on mobile and responsive-design is false.
 // if (!responsiveDesign && window.innerWidth <= 768) {
 // 	responsiveWarning.classList.add("show");

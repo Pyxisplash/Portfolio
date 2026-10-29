@@ -106,10 +106,9 @@ img {
     height: 100vh;
     background-image: url('./images/web back 3.png');
     background-size: cover;
-    background-position: center;
+    background-position: left center;
     background-repeat: no-repeat;
     z-index: -1;
-    
 }
 
 .page-layout {
@@ -136,18 +135,22 @@ img {
 
 
 body {
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
     height: 100vh;
     user-select: none;
+    position: relative;
 }
-
 
 main {
     display: flex;
     height: 100vh;
     align-items: center;
-    gap: 150px; 
+    justify-content: flex-start;
+    gap: 150px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
 }
 main {
   cursor: grab;
@@ -163,22 +166,20 @@ main:active {
 }
 
 section {
-
     background-color: white;
     color: black;
-    max-width: 650px; 
+    max-width: 650px;
     min-height: 550px;
     padding: 5rem;
     top: 1000;
-   left: 50;
-      border-radius: 2.5px 5px 5px 2.5px;
+    left: 50;
+    border-radius: 2.5px 5px 5px 2.5px;
     aspect-ratio: 3/ 4;
     flex-shrink: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    
 }
 
 
@@ -218,15 +219,9 @@ section {
 
 .item {
   display: inline-block;
-  /* background: rgb(5, 121, 24); */
   min-height: 250px;
   min-width: 400px;
   margin: 2em 1em;
-
-  @media screen and (max-width: 500px) {
-      min-height: 200px;
-      min-width: 200px;
-  }
 }
 .section-flex {
   flex-direction: column;
@@ -248,11 +243,91 @@ section {
   transition: transform 0.2s ease;
   display: flex;
   justify-content: center;
-  align-items: top ;
+  align-items: flex-start;
   text-align: center;
+}
+
+.book-link section span {
+  display: inline-block;
+  width: auto;
+  max-width: 72%;
+  text-align: center;
+  line-height: 1.1;
 }
 
 .book-link section:hover {
   transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  main {
+    display: flex;
+    min-height: 100vh;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    padding: 5.5rem 1.5rem 4rem;
+  }
+
+  .items {
+    position: relative;
+    width: min(100%, 560px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding-top: 1rem;
+    overflow: visible;
+    white-space: normal;
+    transition: all 0.2s;
+    transform: none;
+    will-change: auto;
+    cursor: pointer;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(82vw, 420px);
+    min-height: 220px;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .book-link {
+    display: block;
+    width: 100%;
+  }
+
+  .book-link section {
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    padding: 1.5rem 1.25rem 2rem;
+    position: relative;
+  }
+
+  .book-link section span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.14em;
+    max-width: 85%;
+    margin-top: 1.8rem;
+    margin-left: 0;
+    text-align: center;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    white-space: nowrap;
+  }
 }
 
