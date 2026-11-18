@@ -126,6 +126,42 @@
     transform: scale(0.95);
     pointer-events: none;
   }
+
+  .itch-play-button {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border: 2px solid #163b32;
+    border-radius: 4px;
+    background: #b9e4f7;
+    color: #163b32;
+    font: 1rem "MyFont", sans-serif;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 #163b32;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .itch-play-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #163b32;
+    background: #d5f0fc;
+  }
+
+  .itch-play-button:focus-visible {
+    outline: 3px solid #163b32;
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 768px) and (orientation: portrait) {
+    .itch-play-button {
+      right: 78px;
+    }
+  }
 </style>
 
 <!-- Arrows -->
@@ -174,6 +210,10 @@ rightBtn.addEventListener("click", () => {
 
 <body>
     <div class="background"></div> 
+    <a class="itch-play-button" href="https://pyxisplash.itch.io" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-controller" aria-hidden="true"></i>
+      <span>Play Now</span>
+    </a>
     <main>
          <body class="book-2">
         <input type="checkbox" id="cover_checkbox">
