@@ -172,16 +172,17 @@ rightBtn.addEventListener("click", () => {
 </script>
 </head>
 
-<body>
+<body class="book-6">
     <div class="background"></div> 
     <main>
-         <body class="book-2">
         <input type="checkbox" id="cover_checkbox">
         <input type="checkbox" id="page1_checkbox">
         <input type="checkbox" id="page2_checkbox">
         <input type="checkbox" id="page3_checkbox">
         <input type="checkbox" id="page4_checkbox">
         <input type="checkbox" id="page5_checkbox">
+        <input type="checkbox" id="page6_checkbox">
+        <input type="checkbox" id="page7_checkbox">
 
         <!-- Flip Book -->
         <div id="flip_book">
@@ -193,64 +194,86 @@ rightBtn.addEventListener("click", () => {
             <div class="page" id="page1">
                 <div class="front_page">
                     <label for="page1_checkbox"></label>
-                   <section><span>  
-
-                    Coming soon..
+                    <img class="front_content" src="./GCpages/0.png" alt="Graphic design booklet, page 1">
                 </div>
 
                 <div class="back_page">
                     <label for="page1_checkbox"></label>
-                    <!-- <img class="back_content" src="./WebDev/images/pages/page2.webp" alt="Back content"> -->
+                <img class="back_content" src="./images/Graphic%20Design/S1%20p1.png" alt="Spread 1, page 1">
                 </div>
             </div>
 
             <div class="page" id="page2">
                 <div class="front_page">
                     <label for="page2_checkbox"></label>
-                    <!-- <img class="front_content" src="./WebDev/images/pages/page3.webp" alt="Front content"> -->
+                  <img class="front_content" src="./images/Graphic%20Design/S1%20p2.png" alt="Spread 1, page 2">
                 </div>
 
                 <div class="back_page">
                     <label for="page2_checkbox"></label>
-                    <!-- <img class="back_content" src="./WebDev/images/pages/page4.webp" alt="Back content"> -->
+                  <img class="back_content" src="./images/Graphic%20Design/S2%20p1.png" alt="Spread 2, page 1">
                 </div>
             </div>
 
             <div class="page" id="page3">
                 <div class="front_page">
                     <label for="page3_checkbox"></label>
-                    <!-- <img class="front_content" src="./WebDev/images/pages/page5.webp" alt="Front content"> -->
+                  <img class="front_content" src="./images/Graphic%20Design/S2%20p2.png" alt="Spread 2, page 2">
                 </div>
 
                 <div class="back_page">
                     <label for="page3_checkbox"></label>
-                    <!-- <img class="back_content" src="./WebDev/images/pages/page6.webp" alt="Back content"> -->
+                  <img class="back_content" src="./images/Graphic%20Design/S3%20p1.png" alt="Spread 3, page 1">
                 </div>
             </div>
 
             <div class="page" id="page4">
                 <div class="front_page">
                     <label for="page4_checkbox"></label>
+                  <img class="front_content" src="./images/Graphic%20Design/S3%20p2.png" alt="Spread 3, page 2">
                 </div>
 
                 <div class="back_page">
                     <label for="page4_checkbox"></label>
-                    <!-- <img class="back_content" src="./WebDev/images/pages/page8.webp" alt="Back content"> -->
+                  <img class="back_content" src="./images/Graphic%20Design/S4%20p1.png" alt="Spread 4, page 1">
                 </div>
             </div>
 
             <div class="page" id="page5">
                 <div class="front_page">
                     <label for="page5_checkbox"></label>
-                    <!-- <img class="front_content" src="./WebDev/images/pages/page9.webp" alt="Front content"> -->
+                  <img class="front_content" src="./images/Graphic%20Design/S4%20p2.png" alt="Spread 4, page 2">
                 </div>
 
                 <div class="back_page">
                     <label for="page5_checkbox"></label>
-                    
-                    <!-- <img class="back_content" src="./WebDev/images/pages/page10.webp" alt="Back content"> -->
+                  <img class="back_content" src="./images/Graphic%20Design/S5%20p1.png" alt="Spread 5, page 1">
                 </div>
             </div>
+
+              <div class="page" id="page6">
+                <div class="front_page">
+                  <label for="page6_checkbox"></label>
+                  <img class="front_content" src="./images/Graphic%20Design/S5%20p2.png" alt="Spread 5, page 2">
+                </div>
+
+                <div class="back_page">
+                  <label for="page6_checkbox"></label>
+                  <img class="back_content" src="./images/Graphic%20Design/S6%20p1.png" alt="Spread 6, page 1">
+                </div>
+              </div>
+
+              <div class="page" id="page7">
+                <div class="front_page">
+                  <label for="page7_checkbox"></label>
+                  <img class="front_content" src="./images/Graphic%20Design/S6%20p2.png" alt="Spread 6, page 2">
+                </div>
+
+                <div class="back_page">
+                  <label for="page7_checkbox"></label>
+                  <img class="back_content" src="./images/Graphic%20Design/S7%20p1.png" alt="Spread 7, page 1">
+                </div>
+              </div>
 
             <div class="back_cover"></div>
         </div>
@@ -261,7 +284,7 @@ rightBtn.addEventListener("click", () => {
           const title = document.getElementById('bookTitle');
           if (!title) return;
           
-          const checkboxes = ['cover_checkbox', 'page1_checkbox', 'page2_checkbox', 'page3_checkbox', 'page4_checkbox', 'page5_checkbox'];
+          const checkboxes = ['cover_checkbox', 'page1_checkbox', 'page2_checkbox', 'page3_checkbox', 'page4_checkbox', 'page5_checkbox', 'page6_checkbox', 'page7_checkbox'];
           
           function updateTitle() {
             // Check if ANY page is open (including cover)

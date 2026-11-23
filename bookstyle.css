@@ -57,7 +57,7 @@ body {
     background-color: transparent;
 }
 .book-6 .front_cover {
-    background-image: url('./images/pattern\ 6\ book.png');
+    background-image: url('./images/pattern%206%20book.png');
     background-color: transparent;
 }
 
@@ -349,7 +349,7 @@ input {
     background-image: url('./images/patterns book cover 5.png');
 }
 .book-6 .front_cover {
-    background-image: url('./images/pattern\ 6\ book.png');
+    background-image: url('./images/pattern%206%20book.png');
 }
 
 /* === BACK COVER PATTERNS === */
@@ -373,7 +373,7 @@ input {
     background-image: url('./images/pattern 5.png');
 }
 .book-6 .back_cover {
-    background-image: url('./images/pattern 5.png');
+    background-image: url('./images/pattern6.png');
 }
 .front_cover {
     position: absolute;
