@@ -101,7 +101,7 @@ const mobilePageReader = () => {
 		'./digital-art.html',
 		'./3d-modelling.html',
 		'./traditional-art.html',
-		'./graphic-design.html'
+		'./graphic-design.HTML'
 	];
 
 	const getNextBookPath = () => {
