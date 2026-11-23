@@ -194,6 +194,7 @@ rightBtn.addEventListener("click", () => {
         <input type="checkbox" id="page3_checkbox">
         <input type="checkbox" id="page4_checkbox">
         <input type="checkbox" id="page5_checkbox">
+        <input type="checkbox" id="page6_checkbox">
   
         <!-- Flip Book -->
         <div id="flip_book">
@@ -263,6 +264,17 @@ rightBtn.addEventListener("click", () => {
                 </div>
             </div>
 
+            <div class="page" id="page6">
+                <div class="front_page">
+                    <label for="page6_checkbox"></label>
+                    <img class="front_content" src="./images/fisher.png" alt="A colorful fish leaping above a forest stream">
+                </div>
+
+                <div class="back_page">
+                    <label for="page6_checkbox"></label>
+                </div>
+            </div>
+
             <div class="back_cover"></div>
         </div>
 
@@ -272,7 +284,7 @@ rightBtn.addEventListener("click", () => {
           const title = document.getElementById('bookTitle');
           if (!title) return;
           
-          const checkboxes = ['cover_checkbox', 'page1_checkbox', 'page2_checkbox', 'page3_checkbox', 'page4_checkbox', 'page5_checkbox'];
+          const checkboxes = ['cover_checkbox', 'page1_checkbox', 'page2_checkbox', 'page3_checkbox', 'page4_checkbox', 'page5_checkbox', 'page6_checkbox'];
           
           function updateTitle() {
             // Check if ANY page is open (including cover)
